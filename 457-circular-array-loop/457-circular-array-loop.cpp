@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int nextPos(int ind,vector<int>&nums,vector<int>&vis,bool dir)
+    int nextPos(int ind,vector<int>&nums,bool dir)
     {
         bool dirn=nums[ind]>=0;       
         int n=nums.size();
@@ -10,7 +10,7 @@ public:
         if(next<0)
             next=next+n;
         
-        vis[next]=1;
+       
         
         if(dirn !=dir)
             return -1;
@@ -27,30 +27,31 @@ public:
         vector<int> vis(n,0);
         for(int i=0;i<n;i++)
         {
-            // if(vis[i]==0)
-            // {
+            if(vis[i]==0)
+            {
                 int slow=i,fast=i;
                 bool dir=nums[i]>=0;
                 while(true)
                 {
-                    slow=nextPos(slow,nums,vis,dir);
+                    slow=nextPos(slow,nums,dir);
                     if(slow==-1)
                         break;
-                    
-                    fast=nextPos(fast,nums,vis,dir);
+                    vis[slow]=1;
+                    fast=nextPos(fast,nums,dir);
                     if(fast==-1)
                         break;
-                    fast=nextPos(fast,nums,vis,dir);
+                    vis[fast]=1;
+                    fast=nextPos(fast,nums,dir);
                     if(fast==-1)
                         break;
-                    
+                    vis[fast]=1;
                     if(fast==slow)
                         return true;
                         
                     
                         
                 }
-            // }
+            }
             
         }
         
