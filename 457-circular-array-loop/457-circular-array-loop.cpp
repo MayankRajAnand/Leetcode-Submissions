@@ -10,8 +10,6 @@ public:
         if(next<0)
             next=next+n;
         
-       
-        
         if(dirn !=dir)
             return -1;
         if(next==ind)
