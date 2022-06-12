@@ -34,7 +34,7 @@ public:
                     slow=nextPos(slow,nums,dir);
                     if(slow==-1)
                         break;
-                    vis[slow]=1;
+                    
                     fast=nextPos(fast,nums,dir);
                     if(fast==-1)
                         break;
