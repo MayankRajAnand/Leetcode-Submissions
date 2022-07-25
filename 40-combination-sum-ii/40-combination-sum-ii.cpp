@@ -8,8 +8,7 @@ public:
             return;
         }
             
-        if(k<0 or ind==can.size())
-            return ;
+       
         for(int i=ind;i<can.size();i++)
         {
            
