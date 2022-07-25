@@ -1,35 +1,34 @@
 class Solution {
 public:
-    void solve(vector<int>& candidates, int target ,vector<vector<int>>&result ,vector<int>&output , int index){
-    
-    if(target==0){
-        result.push_back(output);
-        
-    }
-    
-    if(target<0 ||index==candidates.size()){
-        return;
-    }
-    
-    for(int i = index ; i<candidates.size() ; i++){
-        if(i>index && candidates[i]==candidates[i-1]){
-            continue;
+    void func(int ind,vector<int>& can, int k,vector<vector<int>>&ans,vector<int>&v)
+    {
+        if(k==0)
+        {
+           ans.push_back(v);
+            return;
         }
-        if(candidates[i]>target){
-            break;
+            
+        if(k<0 or ind==can.size())
+            return ;
+        for(int i=ind;i<can.size();i++)
+        {
+           
+            if(i>ind and can[i]==can[i-1])continue;
+            if(can[i]>k)break;
+             v.push_back(can[i]);
+            func(i+1,can,k-can[i],ans,v);
+            v.pop_back();
+            
         }
-        output.push_back(candidates[i]);
-        solve(candidates , target-candidates[i] , result , output , i+1); 
-        output.pop_back(); 
     }
     
-}
-    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
-        sort(candidates.begin() , candidates.end());
+
+    vector<vector<int>> combinationSum2(vector<int>& can, int k) {
+        sort(can.begin() , can.end());
         vector<vector<int>>result ;
         vector<int>output ;
         int index =0;
-        solve(candidates , target , result , output , index);
+        func(0,can,k,result,output);
 
         return result;
     }
