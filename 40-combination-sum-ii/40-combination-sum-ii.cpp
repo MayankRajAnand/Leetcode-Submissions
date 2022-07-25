@@ -4,10 +4,10 @@ public:
     
     if(target==0){
         result.push_back(output);
-        return;
+        
     }
     
-    if(target<0 ||index>=candidates.size()){
+    if(target<0 ||index==candidates.size()){
         return;
     }
     
