@@ -22,6 +22,6 @@ public:
             c++;
             
         }
-        return (int)mini;
+        return mini;
     }
 };
