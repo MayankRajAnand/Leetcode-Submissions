@@ -9,7 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-#include<bits/stdc++.h>
+
 class Solution {
 public:
     bool isValid(TreeNode* root,long mini,long maxi)
