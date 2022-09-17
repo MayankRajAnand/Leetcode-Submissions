@@ -22,7 +22,6 @@ class Solution {
     }
     
     int kthSmallest(TreeNode* root, int k) {
-        
         inorder(root,k);
         return ans;
     }
