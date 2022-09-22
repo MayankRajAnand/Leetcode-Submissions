@@ -11,7 +11,8 @@ int tsp(int mask, int pos, int n, vector<vector<int>>&dp, vector<int>&nums1,vect
     {
         if((mask & (1<<k))==0)
         {
-           ans=min(ans,(nums1[pos]^nums2[k]) + tsp(mask | (1<<k), pos+1, n, dp, nums1,nums2));
+           int newans=(nums1[pos]^nums2[k]) + tsp(mask | (1<<k), pos+1, n, dp, nums1,nums2);
+            ans=min(ans,newans);
                         
         }
     }
