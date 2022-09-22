@@ -2,7 +2,7 @@ class Solution {
 public:
 int tsp(int mask, int pos, int n, vector<vector<int>>&dp, vector<int>&nums1,vector<int>&nums2)
 {
-    if(pos==n)
+    if(mask==(1<<n)-1)
         return 0;
     if(dp[mask][pos]!=-1)
         return dp[mask][pos];
