@@ -28,11 +28,13 @@ public:
         {
             p3->next=p1->next;
             p1->next=NULL;
+            delete p1;
         }
         else if(p2->next==NULL){
             temp=p1->next;
             p1->next=temp->next;
             temp->next=NULL;
+            delete temp;
         }
         
         return head;     
