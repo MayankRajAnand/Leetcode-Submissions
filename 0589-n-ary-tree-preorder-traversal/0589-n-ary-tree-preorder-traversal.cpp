@@ -20,22 +20,21 @@ public:
 
 class Solution {
 public:
-    void helper(Node*root,vector<int>&ans)
+    void helper(Node* root,vector<int>&ans)
     {
-       if(root)
-           ans.push_back(root->val);
+        if(root==NULL)
+            return;
+        ans.push_back(root->val);
         for(auto it:root->children)
         {
-            if(it)
-                helper(it,ans);
+            if(it==NULL)return;
+            helper(it,ans);
         }
-        
     }
     vector<int> preorder(Node* root) {
         vector<int>ans;
         if(root==NULL)
-            return ans ;
-        
+            return ans;
         helper(root,ans);
         return ans;
     }
