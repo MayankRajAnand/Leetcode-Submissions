@@ -7,7 +7,7 @@ public:
         {
             if(command[i]=='G')
                 ans+='G';
-            else if(command[i]=='(' and command[i+1]==')')
+            else if(i<n-1 and command[i]=='(' and command[i+1]==')')
             {
                 ans+='o';
                 i++;
