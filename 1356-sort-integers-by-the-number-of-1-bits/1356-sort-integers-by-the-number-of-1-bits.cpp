@@ -20,7 +20,6 @@ public:
             
     }
     vector<int> sortByBits(vector<int>& arr) {
-        sort(arr.begin(),arr.end());
         sort(arr.begin(),arr.end(),comp);
         return arr;
     }
