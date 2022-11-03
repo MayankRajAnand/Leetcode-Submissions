@@ -5,31 +5,27 @@ public:
         int ans=nums[0]+nums[1]+nums[2];
         for(int i=0;i<nums.size()-2;i++)
         {
-            for(int j=i+1;j<nums.size()-1;j++)
+            int lo=i+1;
+            int hi=nums.size()-1;
+            while(lo<hi)
             {
-                int sum=nums[i]+nums[j];
-                int lo=j+1;
-                int hi=nums.size()-1;
-                
-                while(lo<=hi)
+                int sum=nums[i]+nums[lo]+nums[hi];
+                if(sum==target)
+                    return target;
+                else if(sum>target)
                 {
-                    int mid=lo+(hi-lo)/2;
-                    if(sum+nums[mid]==target)
-                        return target;
-                    else if(sum+nums[mid]>target)
+                    if( abs(sum-target)<abs(ans-target))
                     {
-                        int ab=abs(target-(sum+nums[mid]));
-                        if(abs(target-ans)>ab)
-                            ans=sum+nums[mid];
-                        hi=mid-1;
-                        
+                        ans=nums[i]+nums[lo]+nums[hi];
                     }
-                    else{
-                        int ab=abs(target-(sum+nums[mid]));
-                        if(abs(target-ans)>ab)
-                            ans=sum+nums[mid];
-                        lo=mid+1;
+                    hi--;
+                }
+                else{
+                    if(abs(sum-target)<abs(ans-target))
+                    {
+                        ans=nums[i]+nums[lo]+nums[hi];
                     }
+                    lo++;
                 }
             }
         }
