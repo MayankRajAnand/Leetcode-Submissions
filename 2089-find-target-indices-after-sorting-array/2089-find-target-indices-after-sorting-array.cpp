@@ -13,7 +13,8 @@ public:
         }
         sort(nums.begin(),nums.end());
         int first=lower_bound(nums.begin(),nums.end(),target)-nums.begin();
-        if(nums[first]!=target)return ans;
+        cout<<first;
+        if(first<0 or nums[first]!=target)return ans;
         int last=upper_bound(nums.begin(),nums.end(),target)-nums.begin();
         
         for(int i=first;i<last;i++)
