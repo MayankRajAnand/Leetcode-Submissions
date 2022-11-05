@@ -4,7 +4,7 @@ public:
         sort(v.begin(),v.end());
         int lo=0;
         int n=v.size();
-        int hi=v.size();
+        int hi=n;
         int ans=0;
         while(lo<=hi)
         {
