@@ -5,9 +5,10 @@ public:
         for(auto it:candyType)
             m[it]++;
         int c=0;
+        int n=candyType.size()/2;
         for(auto it:m)
         {
-            if(c<candyType.size()/2)
+            if(c<n)
                 c++;
         }
         return c;
