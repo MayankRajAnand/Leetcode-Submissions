@@ -1,41 +1,49 @@
 class Solution {
 public:
     int calculate(string s) {
-        int ans=0,sign=1;
-        stack<int> stk;
-
-        for(int i=0;i<s.length();i++)
+        int ans=0;
+        long long curr_val=0;
+        int sign =1;
+        stack<long long>st;
+        for(auto it:s)
         {
-            if(s[i]==' ') continue;
-
-            if(isdigit(s[i]))
+            if(isdigit(it))
             {
-                 int temp=0;
-                 while(i<s.length() && isdigit(s[i]))
-                 {
-                     temp =temp* 10 +(s[i]-'0');
-                     i++;
-                 }       
-                 i--;
-                 ans += temp*sign;   
+                curr_val=curr_val*10 +(it-'0');
             }
-            else if(s[i]=='+') sign=1;
-            else if(s[i]=='-') sign=-1;
-            else if(s[i]=='('){
-                stk.push(ans);
-                stk.push(sign);
-                //reset sign & result
-                ans = 0 ;
-                sign = 1;
+            else if(it=='+')
+            {
+                ans+=curr_val*sign;
+                curr_val=0;
+                sign=1;
             }
-            else{
-                ans *= stk.top();
-                stk.pop();
-                ans += stk.top();
-                stk.pop();
+            else if(it=='-')
+            {
+                ans+=curr_val*sign;
+                curr_val=0;
+                sign=-1;
             }
-
+            
+            else if(it=='(')
+            {
+                st.push(ans);
+                st.push(sign);
+                sign=1;
+                ans=0;
+            }
+            else if(it==')')
+            {
+                ans+=curr_val*sign;
+                curr_val=0;
+                ans=ans*st.top();
+                st.pop();
+                
+                ans+=st.top();
+                st.pop();
+            }
         }
+        ans+=curr_val*sign;
         return ans;
+        
     }
 };
