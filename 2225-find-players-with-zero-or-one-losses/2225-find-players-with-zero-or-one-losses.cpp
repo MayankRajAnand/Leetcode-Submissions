@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> findWinners(vector<vector<int>>& matches) {
-        unordered_set<int>total;
+        set<int>total;
         unordered_map<int,int>loss;
         
         for(int i=0;i<matches.size();i++)
@@ -23,8 +23,6 @@ public:
             else if(loss[it]==1)
                 one.push_back(it);
         }
-        sort(zero.begin(),zero.end());
-        sort(one.begin(),one.end());
         ans.push_back(zero);
         ans.push_back(one);
         return ans;
