@@ -21,7 +21,7 @@ public:
     }
     
     int getRandom() {
-        auto it = s.cbegin();
+        auto it = s.begin();
         int random = rand() % s.size();
         advance(it,random);
         return *it;
